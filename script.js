@@ -41,7 +41,8 @@ function checkTheResult (request){
     for (let i = 0; i < 1; i++){
 
         personalRequest = prompt(request);
-        if (personalRequest != 0 && personalRequest != ""){
+
+        if (personalRequest !== 0 && personalRequest !== "" && personalRequest !== null){
         }
         else {
             i--;
@@ -50,10 +51,22 @@ function checkTheResult (request){
     }
     return personalRequest;
 }
-personalMoviesDB.count = +checkTheResult("Nechta kino ko'rgansiz?")
-personalMoviesDB.movies[checkTheResult("Oxirgi ko'rgan kinoyingiz?")] = +checkTheResult("Unga qanday baho berasiz?")
+function checkTheFan () {
+    if (personalMoviesDB.count < 10){
+        alert("Ko'rilgan filmlar soni kam!");
+    }else if ( personalMoviesDB.count > 10 && personalMoviesDB.count < 30){
+        alert("Siz klassik tomoshabinsiz!");
+    }else if (personalMoviesDB.count > 30){
+        alert("Siz kino ishqibozisiz!");
+    }
+}
+personalMoviesDB.count = +checkTheResult("Nechta kino ko'rgansiz?");
 
-console.log(personalMoviesDB)
+checkTheFan();
+
+personalMoviesDB.movies[checkTheResult("Oxirgi ko'rgan kinoyingiz?")] = +checkTheResult("Unga qanday baho berasiz?");
+
+console.log(personalMoviesDB);
 
 
 
