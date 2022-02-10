@@ -27,30 +27,33 @@
 // — "Siz kino ishqibozisiz" so'zlari consolga chiqarilisin. Agar variantlardan hech biri mos kelmasa, "Xatolik yuz berdi" so'zi consolga chiqsin.
 //
 // 4) Mashq qiling va siklni yana ikkita usulda qayta yozing
+// noinspection InfiniteLoopJS
 
 let personalMoviesDB = {
     "count": {},
     "movies": {},
     "gender": [],
     "privat": false
-};
+}, personalRequest;
 
-function personalRequestSend(request) {
-    return prompt(request);
-}
+function checkTheResult (request){
 
-for ( let i = 0; i < 1; i++){
-    personalMoviesDB.count = +personalRequestSend("Nechta kino ko'rgansiz?")
-    console.log(personalMoviesDB.count)
-    if (personalRequestSend() !== 0 && personalRequestSend() !== "" && !isNaN(personalRequestSend())){
-        for (let i = 0; i < 1; i++){
-            personalMoviesDB.movies = personalRequestSend("Oxirgi ko'rgan filmlaringizdan biri");
-            if (personalRequestSend() !== 0 && personalRequestSend() !== ""){
+    for (let i = 0; i < 1; i++){
 
-            }
+        personalRequest = prompt(request);
+        if (personalRequest != 0 && personalRequest != ""){
         }
-    }else {
-        console.log("Error")
+        else {
+            i--;
+            alert("Error");
+        }
     }
+    return personalRequest;
 }
+personalMoviesDB.count = +checkTheResult("Nechta kino ko'rgansiz?")
+personalMoviesDB.movies[checkTheResult("Oxirgi ko'rgan kinoyingiz?")] = +checkTheResult("Unga qanday baho berasiz?")
+
+console.log(personalMoviesDB)
+
+
 
